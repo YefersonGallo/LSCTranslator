@@ -12,7 +12,7 @@ import numpy as np
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
 
-actions = np.array(['a', 'b', 'c', 'i', 'j'])
+actions = np.array(['g', 'h', 'j', 'ñ', 'p', 'q', 'r', 's', 't', 'y', 'z'])
 
 no_sequences = 30
 
@@ -72,11 +72,11 @@ model.add(Dense(32, activation='relu'))
 model.add(Dense(actions.shape[0], activation='softmax'))
 
 
-model.load_weights('actionAdamPoisson.nice.h5')
+model.load_weights('action_new_dataset_2.h5')
 
 model.summary()
 
-colors = [(245, 117, 16), (117, 245, 16), (16, 117, 245), (16, 117, 245), (16, 117, 245)]
+colors = [(245, 117, 16), (117, 245, 16), (16, 117, 245), (16, 117, 245), (16, 117, 245), (245, 117, 16), (117, 245, 16), (16, 117, 245), (16, 117, 245), (16, 117, 245), (16, 117, 245)]
 
 
 def prob_viz(res, actions, input_frame, colors):

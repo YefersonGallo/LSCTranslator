@@ -7,10 +7,10 @@ mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
 
 DATA_PATH = os.path.join('MP_Data')
+#k 100
+actions = np.array(['k'])
 
-actions = np.array(['a', 'b', 'c', 'j', 'i'])
-
-no_sequences = 30
+no_sequences = 300
 
 sequence_length = 30
 
@@ -65,7 +65,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
     # Loop through actions
     for action in actions:
         # Loop through sequences aka videos
-        for sequence in range(no_sequences):
+        for sequence in range(120, no_sequences):
             # Loop through video length aka sequence length
             for frame_num in range(sequence_length):
 

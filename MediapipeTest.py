@@ -5,6 +5,7 @@ import os
 
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
+mp_hands = mp.solutions.hands
 
 cap = cv2.VideoCapture(0)
 
@@ -25,6 +26,12 @@ def draw_landmarks(image, results):
                               mp_holistic.HAND_CONNECTIONS)  # Draw left hand connections
     mp_drawing.draw_landmarks(image, results.right_hand_landmarks,
                               mp_holistic.HAND_CONNECTIONS)  # Draw right hand connections
+
+def draw_landmarks_hands(image, results):
+    mp_drawing.draw_landmarks(image, results.left_hand_landmarks,
+                                  mp_hands.HAND_CONNECTIONS)  # Draw left hand connections
+    mp_drawing.draw_landmarks(image, results.right_hand_landmarks,
+                                  mp_hands.HAND_CONNECTIONS)  # Draw right hand connections
 
 
 def draw_styled_landmarks(image, results):
@@ -48,6 +55,16 @@ def draw_styled_landmarks(image, results):
                               mp_drawing.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=4),
                               mp_drawing.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2)
                               )
+
+def draw_styled_landmarks_hands(image, results):
+    # Draw left hand connections
+    if results.multi_hand_landmarks is not None:
+        # Dibujando los puntos y las conexiones mediante mp_drawing
+        for hand_landmarks in results.multi_hand_landmarks:
+            mp_drawing.draw_landmarks(
+                image, hand_landmarks, mp_hands.HAND_CONNECTIONS,
+                mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=2, circle_radius=4),
+                mp_drawing.DrawingSpec(color=(121, 44, 250), thickness=2, circle_radius=2))
 
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:

@@ -5,10 +5,11 @@ import os
 DATA_PATH = os.path.join('MP_Data')
 
 # Actions that we try to detect
-actions = np.array(['a', 'b', 'c', 'j', 'i'])
+actions = np.array(['e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's',
+                    't', 'u', 'v', 'w', 'x', 'y', 'z'])
 
 # Thirty videos worth of data
-no_sequences = 30
+no_sequences = 300
 
 # Videos are going to be 30 frames in length
 sequence_length = 30
